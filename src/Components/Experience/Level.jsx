@@ -2,15 +2,32 @@ import * as THREE from "three";
 import React, { useMemo, useRef, useState } from "react";
 import { useFrame } from "@react-three/fiber";
 import { CuboidCollider, RigidBody } from "@react-three/rapier";
-import { Text } from "@react-three/drei";
+import { Float, Text } from "@react-three/drei";
 
 // console.log((THREE.ColorManagement.enabled = false));
 
 const boxGeometry = new THREE.BoxGeometry(1, 1, 1);
-const floorMaterial1 = new THREE.MeshStandardMaterial({ color: "limegreen" });
-const floorMaterial2 = new THREE.MeshStandardMaterial({ color: "greenyellow" });
-const obstacleMaterial = new THREE.MeshStandardMaterial({ color: "orangered" });
-const wallMaterial = new THREE.MeshStandardMaterial({ color: "slategray" });
+const floorMaterial1 = new THREE.MeshStandardMaterial({
+  color: "#111111",
+  // metalness: 0,
+  // roughness: 0,
+});
+const floorMaterial2 = new THREE.MeshStandardMaterial({
+  color: "#222222",
+  // metalness: 0,
+  // roughness: 0,
+});
+const obstacleMaterial = new THREE.MeshStandardMaterial({
+  color: new THREE.Color(5, 0, 0),
+  toneMapped: false,
+  // metalness: 0.5,
+  // roughness: 0,
+});
+const wallMaterial = new THREE.MeshStandardMaterial({
+  color: "#887777",
+  // metalness: 0,
+  // roughness: 0,
+});
 
 /**
  * starting block of game
@@ -26,8 +43,14 @@ function BlockStart({ position = [0, 0, 0] }) {
         position={[0, -0.1, 0]}
         receiveShadow
       />
+      {/* text */}
+      <Float>
+        <Text fontSize={0.3} color={"white"} position={[0, 1, 0]}>
+          MAKE IT ROLL!
+        </Text>
+      </Float>
       {/* back wall */}
-      <RigidBody type={"fixed"} restitution={0.2} friction={0}>
+      {/* <RigidBody type={"fixed"} restitution={0.2} friction={0}>
         <mesh
           geometry={boxGeometry}
           material={wallMaterial}
@@ -35,7 +58,7 @@ function BlockStart({ position = [0, 0, 0] }) {
           scale={[4.4, 2.5, 0.2]}
           castShadow
         />
-      </RigidBody>
+      </RigidBody> */}
     </group>
   );
 }
@@ -261,6 +284,7 @@ function Walls({ length }) {
 function Level({
   count = 5,
   types = [SpinningTrapBlock, VerticalTrapBlock, HorizontalTrapBlock],
+  seed = 0,
 }) {
   const blocks = useMemo(() => {
     const blocks = [];
@@ -271,7 +295,7 @@ function Level({
     }
 
     return blocks;
-  }, [count, types]);
+  }, [count, types, seed]);
 
   return (
     <>

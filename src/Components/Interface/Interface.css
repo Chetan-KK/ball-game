@@ -14,7 +14,8 @@
  */
 .time {
   position: absolute;
-  top: 15%;
+  backdrop-filter: blur(5px);
+  top: 10%;
   left: 0;
   width: 100%;
   color: #ffffff;
@@ -22,7 +23,27 @@
   background: #00000033;
   padding-top: 5px;
   text-align: center;
+  transition: 200ms;
 }
+.playing_time {
+  top: 1%;
+}
+.highScore {
+  position: absolute;
+  top: 10%;
+  left: 0;
+  width: 100%;
+  color: #ffffff;
+  font-size: 6vh;
+  padding-top: 5px;
+  text-align: right;
+  padding-right: 1rem;
+  transition: 200ms;
+}
+.playing_HS {
+  top: 1%;
+}
+
 /**
  * Restart
  */
@@ -31,6 +52,7 @@
   justify-content: center;
   position: absolute;
   top: 40%;
+  backdrop-filter: blur(5px);
   left: 0;
   width: 100%;
   color: #ffffff;
@@ -45,7 +67,7 @@
  */
 .controls {
   position: absolute;
-  bottom: 10%;
+  bottom: 5%;
   left: 0;
   width: 100%;
 }
