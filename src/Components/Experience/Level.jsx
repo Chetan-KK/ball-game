@@ -14,8 +14,8 @@ const floorMaterial1 = new THREE.MeshStandardMaterial({
 });
 const floorMaterial2 = new THREE.MeshStandardMaterial({
   color: "#222222",
-  // metalness: 0,
-  // roughness: 0,
+  metalness: 1,
+  roughness: 0.5,
 });
 const obstacleMaterial = new THREE.MeshStandardMaterial({
   color: new THREE.Color(5, 0, 0),
@@ -25,8 +25,8 @@ const obstacleMaterial = new THREE.MeshStandardMaterial({
 });
 const wallMaterial = new THREE.MeshStandardMaterial({
   color: "#887777",
-  // metalness: 0,
-  // roughness: 0,
+  metalness: 0.8,
+  roughness: 0,
 });
 
 /**
@@ -77,7 +77,7 @@ function BlockEnd({ position = [0, 0, 0] }) {
         position={[0, -0.1, 0]}
         receiveShadow
       />
-      <Text position={[0, 1, -1]} castShadow color={"#242424"}>
+      <Text position={[0, 1, -1]} color={"white"} castShadow>
         WIN
       </Text>
       {/* back wall */}

@@ -1,3 +1,4 @@
+import { Environment } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import React, { useRef } from "react";
 
@@ -12,6 +13,8 @@ function Lights() {
 
   return (
     <>
+      {/* <Environment preset="apartment" /> */}
+
       <directionalLight
         ref={light}
         castShadow
