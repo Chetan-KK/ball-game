@@ -30,11 +30,17 @@ function Interface() {
       } else if (state.phase === "ended") {
         setPlaying(false);
         elapsedTime = state.endTime - state.startTime;
+
         if (
           parseFloat(localStorage.getItem("score")) >
           parseFloat((elapsedTime / 1000).toFixed(2))
         ) {
+          console.log("saved");
           localStorage.setItem("score", (elapsedTime / 1000).toFixed(2));
+        } else {
+          if (!localStorage.getItem("score")) {
+            localStorage.setItem("score", (elapsedTime / 1000).toFixed(2));
+          }
         }
       }
 
@@ -44,6 +50,14 @@ function Interface() {
       if (time.current) {
         time.current.textContent = elapsedTime;
       }
+
+      // console.log(
+      //   parseFloat(localStorage.getItem("score")) < parseFloat(elapsedTime)
+      // );
+      // console.log(
+      //   parseFloat(elapsedTime),
+      //   parseFloat(localStorage.getItem("score"))
+      // );
     });
 
     return () => {

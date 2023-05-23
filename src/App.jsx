@@ -3,6 +3,7 @@ import "./App.css";
 import Experience from "./Components/Experience/Experience";
 import { KeyboardControls } from "@react-three/drei";
 import Interface from "./Components/Interface/Interface";
+import { useEffect } from "react";
 
 function App() {
   return (
