@@ -19,6 +19,11 @@ function Interface() {
   const jump = useKeyboardControls((state) => state.jump);
 
   useEffect(() => {
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "r" || event.key === "R") {
+        handleRestart();
+      }
+    });
     const unsubscribeEffect = addEffect(() => {
       const state = useGame.getState();
 
@@ -72,6 +77,9 @@ function Interface() {
 
   return (
     <div className="interface">
+      {/* menu */}
+      <div className="menu flex">click 'R' to restart</div>
+
       {/* Time */}
       <div className={playing ? "time playing_time" : "time"} ref={time}>
         0.00

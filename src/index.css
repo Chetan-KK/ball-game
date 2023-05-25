@@ -9,3 +9,7 @@
 body {
   background-color: #242424;
 }
+.flex {
+  display: flex;
+  align-items: center;
+}
