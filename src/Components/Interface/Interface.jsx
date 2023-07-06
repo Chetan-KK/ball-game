@@ -78,7 +78,11 @@ function Interface() {
   return (
     <div className="interface">
       {/* menu */}
-      <div className="menu flex">click 'R' to restart</div>
+
+      <div className="menu flex">
+        <div>click 'J' to turn ON/OFF graphics</div>
+        <div>click 'R' to restart</div>
+      </div>
 
       {/* Time */}
       <div className={playing ? "time playing_time" : "time"} ref={time}>

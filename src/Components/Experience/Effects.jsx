@@ -4,14 +4,30 @@ import {
   EffectComposer,
   SSR,
 } from "@react-three/postprocessing";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 function Effects() {
+  const [isEffects, setIsEffects] = useState(true);
+
+  useEffect(() => {
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "j" || event.key === "J") {
+        setIsEffects((old) => {
+          return !old;
+        });
+      }
+    });
+  }, []);
+
   return (
     <>
       <EffectComposer>
         {/* <DepthOfField focusDistance={0.01} focalLength={0.2} bokehScale={3} /> */}
-        <Bloom mipmapBlur intensity={0.1} luminanceThreshold={0} />
+        <Bloom
+          mipmapBlur
+          intensity={isEffects ? 0.2 : 0}
+          luminanceThreshold={0}
+        />
         {/* <SSR
           intensity={0.45}
           exponent={1}
